@@ -1,0 +1,60 @@
+/* body{
+	background: burlywood;
+} */
+
+
+/* body{
+	margin: 0;
+	background: burlywood;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Lato', sans-serif;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=ZCOOL+XiaoWei&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap'); */
+
+
+.login-title{
+	font-family: 'Noto Sans', sans-serif;
+	
+}
+
+.selector-for-some-widget {
+	box-sizing: content-box;
+  }
+
+
+#specialContainer {
+	background-color: green;
+	/* margin:10px; */
+}
+
+
+.mb-5 {
+	background-color: black;
+}
+
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+   }
+
+.upload-label{
+	text-align: left;
+}
+
+  .card-holder{
+	width: 100vw;
+	min-height: 100vh;
+  }
+  
+.card{
+	background: #2326c2;
+	padding: 20px;
+	width: 80%;
+	max-width: 500px;
+	font-family: Arial;
+}
