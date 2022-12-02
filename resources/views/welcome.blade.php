@@ -11,7 +11,7 @@
 	<title>@yield('title')</title>
 
 	<link rel = "stylesheet" href = "{{asset('css/app.css')}}">
-
+	
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -21,31 +21,35 @@
 
 </head>
 <body>
-
-	<nav class = 'navbar navbar-light navbar-expand-lg mb-5' style = "background-color: #e3f2fd;">
-		<nav class='nvabar'>
-			<a class = 'navbar-brand' href="#"><img src = "{{asset('/images/logo.webp')}}"></a>
+	<div class="fixed-top" id = "specialContainer">
+		<nav class = 'navbar navbar-light'>
+			<nav class='navbar'>
+				<a class = 'navbar-brand' href="/"><img src = "{{asset('/images/logo.webp')}}"></a>
+			</nav>
+			<button class="navbar-toggler ml-auto" id='toggler_home' type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon my-toggler"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo01" >
+				<ul class="nav justify-content-end" id = "header_unorder_list">
+					@guest
+					<li class="nav-item" >
+						<a class="nav-link" id = "header_unorder_list" href="{{ route('login') }}">Login</a>
+					</li>
+					<li class="nav-item" >
+						<a class="nav-link" id = "header_unorder_list" href="{{ route('register') }}">Register</a>
+					</li>
+					<li class="nav-item" >
+						<a class="nav-link" id = "header_unorder_list">Contact Us</a>
+					</li>
+					@else
+					<li class="nav-item" >
+						<a class="nav-link" id = "header_unorder_list" href="{{ route('logout') }}">Logout</a>
+					</li>
+					@endguest
+				</ul>
+			</div>
 		</nav>
-		<button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo01" >
-			<ul class="nav justify-content-end">
-				@guest
-				<li class="nav-item">
-					<a class="nav-link" href="{{ route('login') }}">Login</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{ route('register') }}">Register</a>
-				</li>
-				@else
-				<li class="nav-item">
-					<a class="nav-link" href="{{ route('logout') }}">Logout</a>
-				</li>
-				@endguest
-			</ul>
-		</div>
-	</nav>
+	</div>
 	@yield('content')
 </body>
 </html>
