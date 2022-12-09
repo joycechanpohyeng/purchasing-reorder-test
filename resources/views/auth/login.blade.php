@@ -1,6 +1,6 @@
-
+{{-- 
 @extends('welcome')
-@section('content')
+@section('content') --}}
 
        
 
@@ -63,4 +63,3 @@
         </div>
     </div>
 </main>
-

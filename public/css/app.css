@@ -79,3 +79,9 @@ html, body{
 	color:black;
 	text-align: justify;
 }
+
+
+.container{
+	display: table-cell;
+	vertical-align: middle;
+}

@@ -1,0 +1,76 @@
+<?php
+
+namespace App\Http\Controllers;
+use App\Models\File;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+
+
+
+class ImageController extends Controller
+{
+    public function index()
+	{
+		return view('pages.imageUpload');
+	}
+	  
+	
+	public function store(Request $request)
+	{   
+
+		// call reorder form information
+		$storeData = $request->validate([
+			
+			'store_code' => 'required|string',
+			'sku_code' => 'required|string',
+			'order_qty' => 'required|numeric',
+			'remaining_qty' => 'required|numeric',
+			'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,jfif|max:2048',
+			
+		]);
+		
+		$file_model = new File;
+		if($request->method() == 'POST'){
+			$file_name = time().'_'.$request->image->getClientOriginalName();
+			$filePath = $request->file('image')->storeAs('uploads', $file_name, 'public');
+
+			// from User models
+			$file_model->employee_id = Auth::user()->employee_id;
+			$file_model->email = Auth::user()->email;
+			
+			$file_model->store_code = $request->input('store_code');
+			$file_model->sku_code = $request->input('sku_code');
+			$file_model->order_qty = $request->input('order_qty');
+			$file_model->remaining_qty = $request->input('remaining_qty');
+			$file_model->file_name = time().'_'.$request->image->getClientOriginalName();
+			$file_model->file_path = '/storage/app/public/' . $filePath;
+
+			$file_model->save();
+		}
+
+		return back()
+				->with('success','You have successfully upload image.')
+				->with('image', $file_name);
+	}
+
+	public function reorderForm(Request $request)
+	{
+		$validator = Validator::make($request->all(), [
+			'store' => 'bail|required',
+			'sku_code' => 'required',
+			'order_qty' => 'required',
+			'remaining_qty' => 'required'
+		]);
+		
+		if ($validator->fails()){
+			return redirect('/image-upload')
+					->withErrors($validator)
+					->withInput();
+		}
+
+		//or return to store 
+		return $validator;
+		
+	}
+}

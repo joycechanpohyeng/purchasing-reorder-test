@@ -43,6 +43,15 @@
 					</li>
 					@else
 					<li class="nav-item" >
+						<a class = "nav-link active" href="{{route('dashboard')}}" active="request()->routeIs('dashboard')">Dashboard</a>
+					</li>
+					<li class="nav-item" >
+						<a class="nav-link" id = "header_unorder_list" href= "{{route('profile.edit')}}">Profile</a>
+					</li>
+					<li class="nav-item" >
+						<a class="nav-link" id = "header_unorder_list" href= "{{route('reorder.form')}}">Reorder Form</a>
+					</li>
+					<li class="nav-item" >
 						<a class="nav-link" id = "header_unorder_list" href="{{ route('logout') }}">Logout</a>
 					</li>
 					@endguest
