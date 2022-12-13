@@ -4,7 +4,7 @@
 @section('content')
 
 <main class ="reorder-form">
-	<div class="container">
+	<div class="container d-flex justify-content-center">
         <div class="row justify-content-center">
             <div class = "card border-secondary mb-3">
             

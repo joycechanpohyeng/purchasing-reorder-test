@@ -3,6 +3,10 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ImageController;
 use Illuminate\Support\Facades\Route;
+use PHPUnit\TextUI\XmlConfiguration\Group;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\updateSKUController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +37,17 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/upload-image', [ImageController::class, 'index']);
     Route::post('/upload-image', [ImageController::class, 'store'])->name('reorder.form');
+});
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/upload-image', [ImageController::class, 'index']);
+    Route::post('/upload-image', [ImageController::class, 'store'])->name('reorder.form');
+});
+
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/update-sku', [updateSKUController::class, 'index']);
+    Route::post('/update-sku', [updateSKUController::class, 'importData'])->name('update.sku');
 });
 
 

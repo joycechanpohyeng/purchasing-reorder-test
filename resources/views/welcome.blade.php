@@ -52,6 +52,9 @@
 						<a class="nav-link" id = "header_unorder_list" href= "{{route('reorder.form')}}">Reorder Form</a>
 					</li>
 					<li class="nav-item" >
+						<a class="nav-link" id = "header_unorder_list" href = "{{route('update.sku')}}">Update SKU</a>
+					</li>
+					<li class="nav-item" >
 						<a class="nav-link" id = "header_unorder_list" href="{{ route('logout') }}">Logout</a>
 					</li>
 					@endguest
