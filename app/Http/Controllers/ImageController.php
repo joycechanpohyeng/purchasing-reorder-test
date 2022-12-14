@@ -5,7 +5,7 @@ use App\Models\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\SkuDepartment;
 
 
 class ImageController extends Controller
@@ -72,5 +72,17 @@ class ImageController extends Controller
 		//or return to store 
 		return $validator;
 		
+	}
+
+
+	public function searchSKU(Request $request){
+		$query = $request->get('query');
+		$filter_result = SkuDepartment::select("sku_code")
+						->where('sku_code', 'LIKE', '%'.$query.'%')
+						->get();
+
+		// dd(response()->json($filter_result));
+		return response()->json($filter_result);
+
 	}
 }

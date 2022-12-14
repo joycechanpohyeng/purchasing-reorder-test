@@ -37,13 +37,8 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/upload-image', [ImageController::class, 'index']);
     Route::post('/upload-image', [ImageController::class, 'store'])->name('reorder.form');
+    Route::get('/upload-image2', [ImageController::class, 'searchSKU'])->name('search.sku.form');
 });
-
-Route::group(['middleware' => ['auth']], function () {
-    Route::get('/upload-image', [ImageController::class, 'index']);
-    Route::post('/upload-image', [ImageController::class, 'store'])->name('reorder.form');
-});
-
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/update-sku', [updateSKUController::class, 'index']);

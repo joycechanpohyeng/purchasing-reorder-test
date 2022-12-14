@@ -25,7 +25,7 @@
                     <form method = 'POST' action = "{{route('reorder.form')}}" enctype="multipart/form-data">
                         
                         @csrf
-                        <!-- change to dropdown select search for store-->
+                        <!-- store-->
                         <div class="form-group mb-3">
                             <label class="form-label" for = 'store_code'>Store</label>
                             <input type='text' name="store_code" id='store_code' class = " form-control @error('store_code') is-invalid @enderror">
@@ -42,8 +42,8 @@
                         <!-- change to dropdown select search for sku_code-->
                         <div class="form-group mb-3">
                             <label class="form-label" for ='sku_code'>SKU Code</label>
-                            <input type='text' name="sku_code" id='sku_code' class = " form-control @error('sku_code') is-invalid @enderror">
-
+                            <input type='text' name="sku_code" id='sku_code' class = "typeahead form-control @error('sku_code') is-invalid @enderror">
+                            
                             @if ($errors->any('sku_code'))
                             <span class = "invalid-feedback" role="alert">
                                 <strong>
@@ -52,6 +52,15 @@
                             </span>
                             @endif
                         </div>
+
+                        <script type="text/javascript">
+                            var route = "{{ route('search.sku.form') }}";
+                            $('#sku_code').typeahead({
+                                source: function (query, process) {
+                                    return $.get(route, {query: query}, function (data) {return process(data);});
+                                }
+                            });
+                        </script>
 
                         
                         <!-- order quantity -->
@@ -101,14 +110,7 @@
         </div>
 	</div>
     
-    <script type = "text/javascript">
-        var route = "{{url('search-sku')}}";
-        $('#sku_code').typeahead({
-            source: function(query, process){
-                return $.get(route, {query:query}, function(data) {return process(data)});
-            }
-        });
-    </script>
+   
 
     <script type = "text/javascript">
         var route = "{{url('search-store_code')}}";

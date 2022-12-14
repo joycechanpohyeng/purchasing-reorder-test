@@ -24,7 +24,7 @@ class updateSKUController extends Controller
 	public function importData(Request $request){
 
 		$data = $request->validate([
-			'sku_file' => 'required',
+			'sku_file' => 'required|max:90000|mimes:xlsx,csv',
 		]);
 		
 		
@@ -43,6 +43,7 @@ class updateSKUController extends Controller
 
 			$i = 0;
 			$read_file = fopen($temp_path, 'r');
+
 			// read file inline --> array
 			while(($line = fgetcsv($read_file))!= False){
 				
@@ -55,17 +56,19 @@ class updateSKUController extends Controller
 				}
 
 				for ($c = 0; $c<$num; $c++){
-					$import_data_arr[$i][]=$line[$c];
+					$import_data_arr[$i][] = $line[$c];
 				}
 				$i++;
 			}
 			fclose($read_file);
+
+			
 			// insert to mysql
 			foreach($import_data_arr as $import_data){
 				$insert_data = array(
 					"sku_code" => $import_data[0],
 					"m_department" => $import_data[1],
-					"m_price" => $import_data[2],
+					"norm_price" => $import_data[2],
 					
 				);
 				SkuDepartment::insertData($insert_data);
