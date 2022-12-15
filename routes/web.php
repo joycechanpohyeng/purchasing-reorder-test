@@ -20,29 +20,35 @@ use App\Http\Controllers\updateSKUController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+	return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+	Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+	Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+	Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/upload-image', [ImageController::class, 'index']);
-    Route::post('/upload-image', [ImageController::class, 'store'])->name('reorder.form');
-    Route::get('/upload-image2', [ImageController::class, 'searchSKU'])->name('search.sku.form');
+	Route::get('/upload-image', [ImageController::class, 'index']);
+	Route::post('/upload-image', [ImageController::class, 'store'])->name('reorder.form');
+	Route::get('/upload-image2', [ImageController::class, 'searchSKU'])->name('search.sku.form');
 });
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/update-sku', [updateSKUController::class, 'index']);
-    Route::post('/update-sku', [updateSKUController::class, 'importData'])->name('update.sku');
+	Route::get('/update-sku', [updateSKUController::class, 'index']);
+	Route::post('/update-sku', [updateSKUController::class, 'importData'])->name('update.sku');
+});
+
+Route::group(['middleware' => ['auth']], function(){
+	Route::resource('roles', RoleController::class);
+	Route::resource('users', RoleController::class);
+	Route::resource('products', RoleController::class);
 });
 
 
