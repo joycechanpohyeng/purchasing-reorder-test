@@ -51,9 +51,20 @@
 					<li class="nav-item" >
 						<a class="nav-link" id = "header_unorder_list" href= "{{route('reorder.form')}}">Reorder Form</a>
 					</li>
+					{{--@if(auth()->user()->can('admin'))--}}
+
 					<li class="nav-item" >
-						<a class="nav-link" id = "header_unorder_list" href = "{{route('update.sku')}}">Update SKU</a>
+						<a class="nav-link" id = "header_unorder_list" href = "{{ route('users.index') }}">Manage Users</a>
 					</li>
+
+					<li class="nav-item" >
+						<a class="nav-link" id = "header_unorder_list" href = "{{ route('roles.index') }}">Manage Role</a>
+					</li>
+
+					<li class="nav-item" >
+						<a class="nav-link" id = "header_unorder_list" href = "{{route('update.sku')}}">Update SKU</a>   {{--{{ route('products.index') }} --}}
+					</li>
+					{{--@endif --}}
 					<li class="nav-item" >
 						<a class="nav-link" id = "header_unorder_list" href="{{ route('logout') }}">Logout</a>
 					</li>
@@ -62,6 +73,10 @@
 			</div>
 		</nav>
 	</div>
-	@yield('content')
+	
+	<div class = 'container' id = 'contentContainer'>
+		@yield('content')
+	</div>
+	
 </body>
 </html>

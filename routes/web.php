@@ -45,10 +45,10 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::post('/update-sku', [updateSKUController::class, 'importData'])->name('update.sku');
 });
 
-Route::group(['middleware' => ['auth']], function(){
-	Route::resource('roles', RoleController::class);
-	Route::resource('users', RoleController::class);
-	Route::resource('products', RoleController::class);
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('products', ProductController::class);
 });
 
 
