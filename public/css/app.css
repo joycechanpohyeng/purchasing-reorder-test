@@ -35,6 +35,8 @@ html, body{
 
 #contentContainer{
 	background-color: hsl(34, 57%, 70%,0.6);
+	margin: 100;
+	padding: 1000;
 }
 
 .body-container{
