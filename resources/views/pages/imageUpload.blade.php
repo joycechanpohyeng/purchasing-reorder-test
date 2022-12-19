@@ -3,10 +3,11 @@
 @extends('pages.component.header')
 @section('content')
 
-<main class ="reorder-form">
+
+<div class=" p-3 mx-auto bg-light">
 	<div class="container d-flex justify-content-center">
         <div class="row justify-content-center">
-            <div class = "card border-secondary mb-3">
+            <div class = "card border-secondary mb-3" id = 'reorder-card'>
             
                 <h4 class="card-header text-center">Reorder Form</h4>
                 <div class="card-body">
@@ -109,7 +110,7 @@
             </div>
         </div>
 	</div>
-    
+</div>
    
 
     <script type = "text/javascript">
@@ -121,5 +122,5 @@
         });
     </script>
 
-</main>
+
 @endsection

@@ -3,7 +3,7 @@
 @extends('pages.component.header')
 @section('content')
 
-<main class ="update-sku-form">
+<div class=" p-3 mx-auto bg-light">
 	<div class="container d-flex justify-content-center">
         <div class="row justify-content-center">
             <div class = "card border-secondary mb-3" id = "sku-list-card">
@@ -59,5 +59,5 @@
         </div>
 	</div>
 
-</main>
+</div>
 @endsection

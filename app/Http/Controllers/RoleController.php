@@ -40,6 +40,8 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    // create role name eg manager, admin, executive
     public function create()
     {
         $permission = Permission::get();
