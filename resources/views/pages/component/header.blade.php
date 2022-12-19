@@ -27,7 +27,7 @@
 
 </head>
 <body>
-    {{--@include('welcome')--}}
+    @include('welcome')
     @yield('content')
 </body>
 </html>

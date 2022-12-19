@@ -21,8 +21,8 @@
 
 </head>
 <body>
-	<div class="fixed-top" id = "specialContainer">
-		<nav class = 'navbar navbar-light'>
+	<div class="fixed-top">
+		<nav class = 'navbar navbar-light' id = "specialContainer">
 			<nav class='navbar'>
 				<a class = 'navbar-brand' href="/"><img src = "{{asset('/images/logo.webp')}}"></a>
 			</nav>
@@ -52,6 +52,7 @@
 						<a class="nav-link" id = "header_unorder_list" href= "{{route('reorder.form')}}">Reorder Form</a>
 					</li>
 					{{--@if(auth()->user()->can('admin'))--}}
+					@if(Auth::check() && !Auth::user()->role == 'admin')
 
 					<li class="nav-item" >
 						<a class="nav-link" id = "header_unorder_list" href = "{{ route('users.index') }}">Manage Users</a>
@@ -64,7 +65,7 @@
 					<li class="nav-item" >
 						<a class="nav-link" id = "header_unorder_list" href = "{{route('update.sku')}}">Update SKU</a>   {{--{{ route('products.index') }} --}}
 					</li>
-					{{--@endif --}}
+					@endif
 					<li class="nav-item" >
 						<a class="nav-link" id = "header_unorder_list" href="{{ route('logout') }}">Logout</a>
 					</li>
@@ -72,11 +73,10 @@
 				</ul>
 			</div>
 		</nav>
-	</div>
-	
-	<div class = 'container' id = 'contentContainer'>
+
 		@yield('content')
 	</div>
+	
 	
 </body>
 </html>

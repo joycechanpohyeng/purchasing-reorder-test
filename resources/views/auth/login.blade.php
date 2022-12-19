@@ -1,16 +1,15 @@
-{{-- 
+
 @extends('welcome')
-@section('content') --}}
+@section('content')
 
        
 
 <!-- Session Status -->
-
-<main class='login-form'>
-    <div class ='container'>
-        <div class="d-flex justify-content-center">
+<div class="w-100 p-3 mx-auto bg-light">
+	<div class="d-flex align-items-center justify-content-center " >
+		<div class="row justify-content-center w-100">
             <div class="col-md-6 offset-md-3">
-                <div class="card">
+                <div class="card border-secondary mb-3">
                     <h3 class = 'card-header text-center'>Login</h3>
                     <div class = 'card-body'>
 
@@ -62,4 +61,5 @@
             </div>
         </div>
     </div>
-</main>
+</div>
+@endsection
