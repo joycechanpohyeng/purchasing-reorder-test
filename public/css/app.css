@@ -2,6 +2,11 @@ html, body{
 	background: hsl(34, 57%, 70%,0.8) no-repeat fixed center;
 	box-sizing: border-box;
 	font-family: 'Lato', sans-serif;
+	scroll-behavior: smooth;
+	top: 2500;
+	left: 0;
+	behavior: 'smooth';
+
 	/*setting alpha = 0.1*/
 }
 
@@ -30,6 +35,7 @@ html, body{
 
 #specialContainer {
 	background-color: #fff9e4;	
+	position : sticky;
 	/* margin:10px; */
 }
 
