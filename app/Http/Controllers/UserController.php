@@ -18,11 +18,20 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    function __construct()
+    {
+        $this->middleware('permission:user-view|user-create|user-edit|user-delete', ['only'=> ['index', 'store']]);
+        $this->middleware('permission:user-create', ['only'=>['create', 'store']]);
+        $this->middleware('permission:user-edit', ['only'=>['edit', 'update']]);
+        $this->middleware('permission:user-delete', ['only'=>['destroy']]);
+        
+    }
+
     public function index(Request $request)
     {   
         // dd(DB::select('select role_id from model_has_roles where model_id = ?', [1]));
-
-        dd(Auth::user()->id);
+        // dd(Auth::user()->id);
 
         $data = User::orderBy('id','DESC')->paginate(5);        // id, admin
         return view('users.index',compact('data'))
@@ -51,9 +60,10 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
-            'employee_id' => 'required',
+            // 'employee_id' => 'required|unique',
+            'employee_id' => 'required|unique:users,employee_id,',      // added
             'password' => 'required|same:confirm-password',
-            'roles' => 'required'
+            'roles' => 'nullable'
         ]);
     
         $input = $request->all();
@@ -107,7 +117,7 @@ class UserController extends Controller
             'employee_id' => 'required|unique:users,employee_id,'.$id,      // added
             'email' => 'required|email|unique:users,email,'.$id,
             'password' => 'same:confirm-password',
-            'roles' => 'required'
+            'roles' => 'nullable'
         ]);
     
         $input = $request->all();

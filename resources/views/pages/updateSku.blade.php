@@ -1,6 +1,5 @@
 
-
-@extends('pages.component.header')
+@extends('layouts.app')
 @section('content')
 
 <div class=" p-3 mx-auto bg-light">

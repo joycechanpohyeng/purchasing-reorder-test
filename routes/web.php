@@ -52,4 +52,11 @@ Route::group(['middleware' => ['auth']], function() {
 });
 
 
+// Route::get('users/create', [UserController::class, 'create'])->middleware('can:create-users');
+// Route::middleware('can:create-users')->group(function(){
+// 	Route::get('users/create', [UserController::class, 'create']);
+// 	Route::post('users', [UserController::class, 'store']);
+// });
+
+
 require __DIR__.'/auth.php';
