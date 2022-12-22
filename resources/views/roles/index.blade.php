@@ -9,7 +9,7 @@
                         <h2>Role Management</h2>
                     </div>
                     <div class="pull-right">
-                    @can('role-create')
+                        @can('role-create')
                         <a class="btn btn-success float-right" href="{{ route('roles.create') }}"> Create New Role</a>
                         @endcan
                     </div>
@@ -18,7 +18,7 @@
 
 
             @if ($message = Session::get('success'))
-                <div class="alert alert-success">
+                <div class="alert alert-success p-3 mt-3">
                     <p>{{ $message }}</p>
                 </div>
             @endif

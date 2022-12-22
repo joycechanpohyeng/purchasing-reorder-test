@@ -1,6 +1,5 @@
 
-
-@extends('pages.component.header')
+@extends('layouts.app')
 @section('content')
 
 
@@ -17,11 +16,11 @@
                         </div>
                     @endif
 
-                    @if ($message = Session::get('success'))
+                   {{-- @if ($message = Session::get('success'))
                         <div class="alert alert-success text-center">
                             <strong>{{ $message }}</strong>
                         </div>
-                    @endif
+                    @endif --}}
 
                     <form method = 'POST' action = "{{route('reorder.form')}}" enctype="multipart/form-data">
                         
@@ -95,7 +94,9 @@
                             <label class="form-label" for="inputImage">Upload Image</label>
                             <input type="file" name="image" id="inputImage" class="form-control @error('image') is-invalid @enderror">
                             @error('image')
-                                <span class="text-danger">{{ $message }}</span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                             @enderror
                         </div>
 

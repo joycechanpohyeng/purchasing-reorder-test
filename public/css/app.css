@@ -2,10 +2,31 @@ html, body{
 	background: hsl(34, 57%, 70%,0.8) no-repeat fixed center;
 	box-sizing: border-box;
 	font-family: 'Lato', sans-serif;
-	/*setting alpha = 0.1*/
+	position: relative;
+	
+	/* overflow-y: scroll; */
+
+	/* scrollbar-width: normal;
+	scrollbar-color: red;
+	scroll-behavior: smooth; */
+	
+	padding:0px;
+	top: 2500;
+	left: 0;
+}
+
+.scrollbox{
+	overflow: auto;
+}
+
+::-webkit-scrollbar{
+	width: normal;
 }
 
 
+::-webkit-scrollbar-thumb{
+	background: #fff;
+}
 /* body{
 
 	background: burlywood no-repeat fixed center;
@@ -30,6 +51,7 @@ html, body{
 
 #specialContainer {
 	background-color: #fff9e4;	
+	position : sticky;
 	/* margin:10px; */
 }
 
@@ -105,12 +127,12 @@ html, body{
 
 #sku-list-card{
 	width: 3000px;
-	height: 300px;
+	height: auto;
 }
 
 #reorder-card{
 	width: 500px;
-	height: 600px;
+	height: auto;
 }
 
 

@@ -25,16 +25,6 @@
 								@endif
 							</div>
 
-							<!-- Employee ID -->
-							<div class="form-group mb-3">
-								<label for = 'employee_id'>Employee ID: </label>
-								<input type='text' id='employee_id' class = 'form-control' name="employee_id" placeholder="" required autofocus>
-
-								@if ($errors->has('employee_id'))
-								<span class = 'text-danger'>{{$errors->first('employee_id')}}</span>
-								@endif
-							</div>
-
 							<!-- Email -->
 							<div class="form-group mb-3">
 								<label for = 'email'>Email: </label>
@@ -42,6 +32,16 @@
 
 								@if ($errors->has('email'))
 								<span class = 'text-danger'>{{$errors->first('email')}}</span>
+								@endif
+							</div>
+
+							<!-- Employee ID -->
+							<div class="form-group mb-3">
+								<label for = 'employee_id'>Employee ID: </label>
+								<input type='text' id='employee_id' class = 'form-control' name="employee_id" placeholder="" required autofocus>
+
+								@if ($errors->has('employee_id'))
+								<span class = 'text-danger'>{{$errors->first('employee_id')}}</span>
 								@endif
 							</div>
 
@@ -58,7 +58,7 @@
 
 							<!-- Confirm Password -->
 							<div class="form-group mb-3">
-								<label for = 'password_confirmation'>Password: </label>
+								<label for = 'password_confirmation'>Confirm Password: </label>
 								<input type='password' id='password_confirmation' class = 'form-control' name="password_confirmation" placeholder="*****" required autocomplete="current-password">
 
 								@if ($errors->has('password_confirmation'))
