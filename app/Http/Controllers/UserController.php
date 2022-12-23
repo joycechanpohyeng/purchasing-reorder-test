@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
 
+
 class UserController extends Controller
 {	
 	/**
@@ -98,8 +99,18 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $roles = Role::pluck('name','name')->all();
+        
+        $current_user_role = Auth::user()->roles->pluck('name','name')->all();
+
+        // dd(Auth::user()->roles->pluck('name','name')->all());
+        
+        // only admin can grant admin privilege
+        if (!array_key_exists("Admin", $current_user_role)){
+            $roles = Arr::except($roles, ['Admin']);
+        }
+
         $userRole = $user->roles->pluck('name','name')->all();
-    
+
         return view('users.edit',compact('user','roles','userRole'));
     }
     
@@ -126,15 +137,32 @@ class UserController extends Controller
         }else{
             $input = Arr::except($input,array('password'));    
         }
-    
+        
+        // $current_user_role = Auth::user()->roles->pluck('name','name')->all();
+        // if (array_key_exists("Admin", $current_user_role)){
+        //     if ($request->input('roles')){
+
+        //     }
+        // }
+
         $user = User::find($id);
         $user->update($input);
         DB::table('model_has_roles')->where('model_id',$id)->delete();
-    
         $user->assignRole($request->input('roles'));
-    
-        return redirect()->route('users.index')
-                        ->with('success','User updated successfully');
+        
+        // return view to user index or dashborad
+        if (Auth::user()->email == $user->email){
+            if(in_array('Admin', $request->input('roles')) || in_array('Purchaser', $request->input('roles'))){
+                return redirect()->route('users.index')->with('success','User updated successfully');
+            }
+            else{
+                return redirect()->route('dashboard')->with('success','User updated successfully');
+            }
+        }
+        else{
+            return redirect()->route('users.index')->with('success','User updated successfully');
+        }
+     
     }
     
     /**
