@@ -14,17 +14,18 @@ class SkuDepartment extends Model
 	public static function insertData($data){
 
 		// dd($data);
-		$value=DB::table('product_store')->where('sku_code', $data['sku_code'])->get();
+		$value=DB::table('sku_list')->where('sku_code', $data['sku_code'])->get();
 		if ($value->count() == 0) {
-			DB::table('product_store')->insert($data);
+			DB::table('sku_list')->insert($data);
 		}
 	}
 	protected $fillable = [
 		'sku_code',
 		'm_department',
 		'norm_price',
+		'm_desc',
 
 	];
 
-	protected $table = 'product_store';
+	protected $table = 'sku_list';
 }
