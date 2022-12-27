@@ -69,7 +69,10 @@ class updateSKUController extends Controller
 					"sku_code" => $import_data[0],
 					"m_department" => $import_data[1],
 					"norm_price" => $import_data[2],
-					
+					"m_desc" => $import_data[3],
+					"created_at" => \Carbon\Carbon::now(),
+					"updated_at" => \Carbon\Carbon::now(),
+
 				);
 				SkuDepartment::insertData($insert_data);
 			}

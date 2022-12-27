@@ -17,10 +17,11 @@ class skuDepartmentImport implements ToCollection ,WithHeadingRow
 		   '*.sku_code' => 'required|string',
 		   '*.m_department' => 'required|string',
 		   '*.norm_price' => 'required|numeric',
+		   '*.m_desc' => 'nullable|string',
 		],[
 			'*.sku_code.required' => 'SKU code should not empty',
 			'*.m_department.required' => 'Department code should not empty',
-			'*.norm_price' => "Product Price shouldn't empty"
+			'*.norm_price.required' => "Product Price shouldn't empty"
 		])->validate();
  
 		foreach ($rows as $row) {
@@ -34,6 +35,8 @@ class skuDepartmentImport implements ToCollection ,WithHeadingRow
 			'sku_code' => $rows[0],
 			'm_department' => $rows[1],
 			'norm_price' => $rows[2],
+			'm_desc' => $rows[3],
+			
 		  ]);
 		}
 	 }

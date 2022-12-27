@@ -85,17 +85,6 @@
 
 		@yield('content')
 	</div>
-	<script>
-		window.onscroll=function(){scrollFunction()};
-
-		function scrollFunction(){
-			if (document.body.scrollTop >20 || document.documentElement.scrollTop >20){
-				document.getElementById('specialContainer').style.top = '0';
-			}else{
-				document.getElementById('specialContainer').style.top = '-50px';
-			}
-		}
-	</script>
-	
 </body>
+
 </html>

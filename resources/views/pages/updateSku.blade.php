@@ -33,10 +33,8 @@
                         
                         @csrf
                         <div class="custom-file mb-3">
-                                
-                            
                             <input type="file" class="custom-file-input" id="sku_file" name="sku_file">
-                            <label class="custom-file-label" for="file">Choose file</label>
+                            <label class="custom-file-label" for="sku_file">Choose file</label>
 
                             @if ($errors->any('sku_file'))
                                 <span class = "invalid-feedback" role="alert">
@@ -59,4 +57,8 @@
 	</div>
 
 </div>
+
+<!-- scripts -->
+<script src = "{{asset('js/upload_file.js')}}"></script>
+
 @endsection

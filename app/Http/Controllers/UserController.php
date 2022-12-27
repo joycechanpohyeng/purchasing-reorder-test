@@ -138,13 +138,7 @@ class UserController extends Controller
             $input = Arr::except($input,array('password'));    
         }
         
-        // $current_user_role = Auth::user()->roles->pluck('name','name')->all();
-        // if (array_key_exists("Admin", $current_user_role)){
-        //     if ($request->input('roles')){
-
-        //     }
-        // }
-
+        // find current user
         $user = User::find($id);
         $user->update($input);
         DB::table('model_has_roles')->where('model_id',$id)->delete();
