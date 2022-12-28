@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('welcome')
 @section('content')
 
 <div class="w-100 p-3 mx-auto bg-light">
@@ -48,6 +48,7 @@
 						{!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
 					</div>
 				</div>
+				@can('user-delete')
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group">
 						<strong>Password:</strong>
@@ -60,6 +61,7 @@
 						{!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
 					</div>
 				</div>
+				@endcan
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					
 					<div class="form-group">

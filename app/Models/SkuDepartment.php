@@ -13,9 +13,11 @@ class SkuDepartment extends Model
 
 	public static function insertData($data){
 
-		// dd($data);
+		// dd($data['sku_code']);
+		
 		$value=DB::table('sku_list')->where('sku_code', $data['sku_code'])->get();
 		if ($value->count() == 0) {
+			// dump($data);
 			DB::table('sku_list')->insert($data);
 		}
 	}

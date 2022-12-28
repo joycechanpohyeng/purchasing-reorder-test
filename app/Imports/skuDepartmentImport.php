@@ -17,7 +17,7 @@ class skuDepartmentImport implements ToCollection ,WithHeadingRow
 		   '*.sku_code' => 'required|string',
 		   '*.m_department' => 'required|string',
 		   '*.norm_price' => 'required|numeric',
-		   '*.m_desc' => 'nullable|string',
+		   '*.m_desc' => 'string|max:255|nullable',
 		],[
 			'*.sku_code.required' => 'SKU code should not empty',
 			'*.m_department.required' => 'Department code should not empty',

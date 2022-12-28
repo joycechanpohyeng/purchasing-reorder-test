@@ -18,7 +18,7 @@ return new class extends Migration
 			$table->string('sku_code');
 			$table->string('m_department');
 			$table->float('norm_price');
-			$table->string('m_desc');
+			$table->string('m_desc')->nullable();
 			$table->timestamps();
 		});
 	}

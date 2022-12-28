@@ -1,19 +1,9 @@
 html, body{
 	background: hsl(34, 57%, 70%,0.8) no-repeat fixed center;
-	box-sizing: border-box;
 	font-family: 'Lato', sans-serif;
-	position: relative;
 	
-	/* overflow-y: scroll; */
-
-	/* scrollbar-width: normal;
-	scrollbar-color: red;
-	scroll-behavior: smooth; */
-	
-	padding:0px;
-	top: 2500;
-	left: 0;
 }
+
 
 .scrollbox{
 	overflow: auto;
@@ -48,10 +38,15 @@ html, body{
 	max-width: 100%;
   }
 
+.nav-logo{
+	display: block;
+	height: 100px;
+}
 
-#specialContainer {
+
+#bodyNav {
 	background-color: #fff9e4;	
-	position : sticky;
+	width: 100%;
 	/* margin:10px; */
 }
 
@@ -80,6 +75,9 @@ html, body{
 	background-color: white;
 }
 
+#nav-header-container{
+	background-color: #fff9e4;
+}
 
 .mb-5 {
 	background-color: e3f2fd;
@@ -113,6 +111,9 @@ html, body{
 }
 
 #header_unorder_list{
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
 	font-family: 'Lato', sans-serif;
 	color:black;
 	text-align: justify;
@@ -135,4 +136,6 @@ html, body{
 	height: auto;
 }
 
-
+#content_view {
+	padding-top: 350px;
+}

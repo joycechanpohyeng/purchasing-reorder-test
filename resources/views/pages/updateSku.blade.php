@@ -1,5 +1,5 @@
 
-@extends('layouts.app')
+@extends('welcome')
 @section('content')
 
 <div class=" p-3 mx-auto bg-light">

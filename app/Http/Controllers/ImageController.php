@@ -19,7 +19,7 @@ class ImageController extends Controller
 	public function store(Request $request)
 	{   
 
-		// call reorder form information
+		
 		$storeData = $request->validate([
 			
 			'store_code' => 'required|string',

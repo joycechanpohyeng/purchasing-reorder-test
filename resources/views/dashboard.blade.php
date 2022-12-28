@@ -1,5 +1,5 @@
 
-@extends('layouts.app')
+@extends('welcome')
 @section('content')
 
     @if ($message = Session::get('success'))
