@@ -43,43 +43,81 @@ class updateSKUController extends Controller
 
 			$i = 0;
 			$read_file = fopen($temp_path, 'r');
-
+			$header = [];
 			// read file inline --> array
 			while(($line = fgetcsv($read_file))!= False){
-				
+				// dd($line);
+				// number of column
 				$num = count($line);
-				
-				// skip header
+
+				//header
 				if($i==0){
+					$header = $line;
 					$i++;
 					continue;
 				}
 
-				for ($c = 0; $c<$num; $c++){
-					$import_data_arr[$i][] = $line[$c];
+				//skip header
+				else{
+					if(in_array('M_PLUCODE', $header)){
+						$found = array_search('M_PLUCODE', $header);		// found key
+						$import_data_arr[$i]['sku_code'] = $line[$found];
+					}
+					if(in_array('M_DEPARTMENT', $header)){
+						$found = array_search('M_DEPARTMENT', $header);
+						$import_data_arr[$i]['m_department'] = $line[$found];
+					}
+					if(in_array('M_PRICE', $header)){
+						$found = array_search('M_PRICE', $header);
+						$import_data_arr[$i]['norm_price'] = $line[$found];
+					}
+					if(in_array('M_DESC', $header)){
+						$found = array_search('M_DESC', $header);
+						$insert_desc = preg_replace('/[^A-Za-z0-9\-]/', ' ',$line[$found]);
+						$import_data_arr[$i]['m_desc'] = $insert_desc;
+					}
+					$import_data_arr[$i]["created_at"] = \Carbon\Carbon::now()->format('Y-m-d');
+					$import_data_arr[$i]["updated_at"] = \Carbon\Carbon::now()->format('Y-m-d');
 				}
+				
+				// plucode, department, norm price
+				// for ($c = 0; $c<$num; $c++){
+					// array[1=>[0=>plucode, 1=>department, 2=>norm_price, 3=>desc, 4=>m_status], 2=>[...]]
+					// $import_data_arr[$i][] = $line[$c];
+				// }
 				$i++;
 			}
 			fclose($read_file);
 
 			
 			// insert to mysql
-			foreach($import_data_arr as $import_data){
-				$insert_data = array(
-					"sku_code" => $import_data[0],
-					"m_department" => $import_data[1],
-					"norm_price" => $import_data[2],
-					"m_desc" => $import_data[3],
-					"created_at" => \Carbon\Carbon::now(),
-					"updated_at" => \Carbon\Carbon::now(),
+			// foreach($import_data_arr as $import_data){
+			// 	$insert_data = array(
+			// 		"sku_code" => $import_data[0],
+			// 		"m_department" => $import_data[1],
+			// 		"norm_price" => $import_data[2],
+			// 		"m_desc" => $import_data[3],
+			// 		"created_at" => \Carbon\Carbon::now(),
+			// 		"updated_at" => \Carbon\Carbon::now(),
 
-				);
-				SkuDepartment::insertData($insert_data);
+			// 	);
+			// 	SkuDepartment::insertData($insert_data);
+			// }
+			// Session::flash('message','Import Successful.');
+			
+
+			
+			$insert_data = collect($import_data_arr); //make collection to user chunk method
+			$chunks = $insert_data->chunk(300);
+
+			foreach($chunks as $chunk){
+
+				foreach($chunk as $sub_array){
+					SkuDepartment::insertData($sub_array);
+				}
+				
 			}
 			Session::flash('message','Import Successful.');
-
-
-
 
 			// Excel::import(new SkuDepartment, $file_name);
 		}
