@@ -2,13 +2,13 @@
 @section('content')
 
 
-<div class="w-100 p-3 mx-auto bg-light">
-	<div class="d-flex align-items-center justify-content-center " >
-		<div class="fixed-center w-100">
+<div class="p-3 mx-auto" id = 'role-edit'>
+	<div class="align-items-center justify-content-center " >
+		<div class="fixed-center">
             <div class="row">
                 <div class="col-lg-12 margin-tb">
                     <div class="pull-left">
-                        <h2>Edit Role</h2>
+                        <h4>Edit Role</h4>
                     </div>
                     <div class="pull-right">
                         <a class="btn btn-primary float-right" href="{{ route('roles.index') }}"> Back</a>

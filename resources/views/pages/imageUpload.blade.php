@@ -3,9 +3,9 @@
 @section('content')
 
 
-<div class=" p-3 mx-auto bg-light">
-	<div class="container d-flex justify-content-center">
-        <div class="row justify-content-center">
+<div class="w-100 p-3" id="body-div">
+	<div class="d-flex align-items-center justify-content-center" >
+		<div class="row justify-content-center w-100">
             <div class = "card border-secondary mb-3" id = 'reorder-card'>
             
                 <h4 class="card-header text-center">Reorder Form</h4>
@@ -16,7 +16,7 @@
                         </div>
                     @endif
 
-                   {{-- @if ($message = Session::get('success'))
+                {{-- @if ($message = Session::get('success'))
                         <div class="alert alert-success text-center">
                             <strong>{{ $message }}</strong>
                         </div>
@@ -110,18 +110,19 @@
                 </div>
             </div>
         </div>
-	</div>
+    </div>
 </div>
+
    
 
-    <script type = "text/javascript">
-        var route = "{{url('search-store_code')}}";
-        $('#store_code').typeahead({
-            source: function(query, process){
-                return $.get(route, {query:query}, function(data) {return process(data)});
-            }
-        });
-    </script>
+<script type = "text/javascript">
+    var route = "{{url('search-store_code')}}";
+    $('#store_code').typeahead({
+        source: function(query, process){
+            return $.get(route, {query:query}, function(data) {return process(data)});
+        }
+    });
+</script>
 
 
 @endsection
