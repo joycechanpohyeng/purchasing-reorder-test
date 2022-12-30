@@ -1,9 +1,9 @@
 @extends('welcome')
 @section('content')
 
-<div class="w-100 p-3 mx-auto bg-light">
-	<div class="d-flex align-items-center justify-content-center " >
-		<div class="fixed-center w-100">
+<div class="p-3 mx-auto" id = 'user-div'>
+	<div class="align-items-center justify-content-center " >
+		<div class="fixed-center">
 			<div class="row">
 				<div class="col-lg-12 margin-tb">
 					<div class="pull-left">

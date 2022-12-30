@@ -1,7 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=ZCOOL+XiaoWei&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap'); */
+
+
 html, body{
-	background: hsl(34, 57%, 70%,0.8) no-repeat fixed center;
+	/* background: hsl(34, 57%, 70%,0.8) no-repeat fixed center; */
+	background:rgba(255, 249, 243, 0.37); 
 	font-family: 'Lato', sans-serif;
+	font-size: 15px;
+	/* background-image: url('/images/wood.jpg'); */
+	/* filter: blur(8px); */
+}
+
+/* html{
+	width:100%; 
+	height:100%; 
+    background:#fff url('/images/wood.jpg') center center no-repeat;
+    background-attachment: fixed;
+	filter: blur(8px);
+	background-attachment: fixed;
+	background-size: cover;
 	
+} */
+
+
+body{
+	background-color: transparent;
 }
 
 
@@ -12,20 +35,6 @@ html, body{
 ::-webkit-scrollbar{
 	width: normal;
 }
-
-
-::-webkit-scrollbar-thumb{
-	background: #fff;
-}
-/* body{
-
-	background: burlywood no-repeat fixed center;
-	box-sizing: border-box;
-	font-family: 'Lato', sans-serif;
-} */
-
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=ZCOOL+XiaoWei&display=swap');
-/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap'); */
 
 
 .login-title{
@@ -76,16 +85,13 @@ html, body{
 }
 
 #nav-header-container{
-	background-color: #fff9e4;
+	background-color: #fff5d0;
+
 }
 
 .mb-5 {
 	background-color: e3f2fd;
-	/* max-width: 100%;
-	height: 250px; */
 }
-
-
 
 *{
 	margin: 0;
@@ -103,7 +109,7 @@ html, body{
   }
   
 .card{
-	background: #2326c2;
+	background: transparent;
 	padding: 20px;
 	width: 80%;
 	max-width: 500px;
@@ -127,16 +133,60 @@ html, body{
 
 
 #sku-list-card{
-	width: 3000px;
+	width: 100%;
 	height: auto;
 }
 
 #reorder-card{
-	width: 500px;
+	width: 100%;
 	height: auto;
 }
 
-#content_view {
+.content_view {
 	margin-top: 250px;
-
+	/* background-image: url('/images/wood.jpg'); */
+	/* height: 100%; */
 }
+
+
+#body-div, #user-div, #user-show, #role-div, #role-edit{
+	/* old use */
+	/* background: hsl(34, 57%, 70%,0.8);  */
+	background:rgba(255, 249, 243, 0.37);; 
+}
+
+
+#card-form{
+	width: 30rem;
+	max-height: 25rem;
+	background: hsla(0, 0%, 100%, 0.8);
+	
+	backdrop-filter: blur(30px);
+}
+
+#user-table, #role-div, #role-edit{
+	white-space:nowrap;
+}
+
+.tableContainer{
+	overflow: hidden;
+	overflow: auto;
+}
+
+.f32 .flag {
+	vertical-align: middle;
+	margin: -8px 0;
+}
+
+progress {
+	width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+	html,body {
+	   background-image: url('/images/');
+	   font-family: 'Lato', sans-serif;
+	}
+
+
+  }

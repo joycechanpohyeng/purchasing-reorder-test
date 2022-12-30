@@ -2,9 +2,9 @@
 @extends('welcome')
 @section('content')
 
-<div class=" p-3 mx-auto bg-light">
-	<div class="container d-flex justify-content-center">
-        <div class="row justify-content-center">
+<div class="w-100 p-3" id="body-div">
+	<div class="d-flex align-items-center justify-content-center" >
+		<div class="row justify-content-center w-100">
             <div class = "card border-secondary mb-3" id = "sku-list-card">
             
                 <h4 class="card-header text-center">Update SKU List</h4>
@@ -55,7 +55,6 @@
             </div>
         </div>
 	</div>
-
 </div>
 
 <!-- scripts -->

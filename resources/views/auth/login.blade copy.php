@@ -8,8 +8,7 @@
 <div class="w-100 p-3" id="body-div">
 	<div class="d-flex align-items-center justify-content-center" >
 		<div class="row justify-content-center w-100">
-            <!-- <div class="card border-secondary" id = "card-form"> -->
-            <div class="card shadow-5-strong" id = "card-form">
+            <div class="card border-secondary" id = "card-form">
                 <h5 class = 'card-header text-center'>Login</h5>
                 <div class = 'card-body'>
 

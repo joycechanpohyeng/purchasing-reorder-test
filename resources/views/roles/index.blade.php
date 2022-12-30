@@ -1,12 +1,15 @@
 @extends('welcome')
 @section('content')
-<div class="w-100 p-3 mx-auto bg-light">
-	<div class="d-flex align-items-center justify-content-center " >
-		<div class="fixed-center w-100">
+
+
+
+<div class="p-3 mx-auto" id = 'role-div'>
+	<div class="align-items-center justify-content-center " >
+		<div class="fixed-center">
             <div class="row">
                 <div class="col-lg-12 margin-tb">
                     <div class="pull-left">
-                        <h2>Role Management</h2>
+                        <h4>Role Management</h4>
                     </div>
                     <div class="pull-right">
                         @can('role-create')
@@ -48,9 +51,10 @@
                 </tr>
                 @endforeach
             </table>
+            {!! $roles->render() !!}
         </div>
     </div>
 </div>
 
-{!! $roles->render() !!}
+
 @endsection
