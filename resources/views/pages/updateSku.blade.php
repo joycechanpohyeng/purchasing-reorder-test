@@ -7,7 +7,7 @@
 		<div class="row justify-content-center w-100">
             <div class = "card border-secondary mb-3" id = "sku-list-card">
             
-                <h4 class="card-header text-center">Update SKU List</h4>
+                <h4 class="card-header text-center" id = "update-sku-header">Update SKU List</h4>
                 <div class="card-body">
                     <!-- sucess message -->
                     @if ($message = Session::get('message'))
@@ -32,7 +32,7 @@
                     <form method = 'POST' action="{{ route('update.sku') }}" enctype="multipart/form-data">
                         
                         @csrf
-                        <div class="custom-file mb-3">
+                        <div class="custom-file mb-3" id = "update-sku-form">
                             <input type="file" class="custom-file-input" id="sku_file" name="sku_file">
                             <label class="custom-file-label" for="sku_file">Choose file</label>
 
@@ -47,7 +47,7 @@
 
                         <div class="d-grid mx-auto">
                             <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-success">Import SKU</button>
+                                <button type="submit" class="btn btn-success" id = "update-sku-form">Import SKU</button>
                             </div>
                         </div>            
                     </form>    

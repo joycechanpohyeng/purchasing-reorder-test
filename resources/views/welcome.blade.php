@@ -20,75 +20,77 @@
 	<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 </head>
 <body>
+
+<div class="container-fluid">
 	<div class="fixed-top">
 		<nav class = 'navbar navbar-light static-top' id="nav-header-container">
-			<div class="container-fluid">
-				<nav class='navbar'>
-					<a class = "navbar-brand" href="/"><img src = "{{asset('/images/diy.png')}}" class="nav-logo"></a>
-				</nav>
-				<button class="navbar-toggler" id='toggler_home' type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon my-toggler"></span>
-				</button>
+				
+			<nav class='navbar'>
+				<a class = "navbar-brand" href="/"><img src = "{{asset('/images/diy.png')}}" class="nav-logo"></a>
+			</nav>
+			<button class="navbar-toggler" id='toggler_home' type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon my-toggler"></span>
+			</button>
 
-				<div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo01" >
-					<ul class="nav flex-column" id = "header_unorder_list">
-						@guest
-						<li class="nav-item" >
-							<a class="nav-link" id = "header_unorder_list" href="{{ route('login') }}">Login</a>
-						</li>
-						<li class="nav-item" >
-							<a class="nav-link" id = "header_unorder_list" href="{{ route('register') }}">Register</a>
-						</li>
-						<li class="nav-item" >
-							<a class="nav-link" id = "header_unorder_list">Contact Us</a>
-						</li>
-						@else
-						<li class="nav-item" >
-							<a class = "nav-link active" href="{{route('dashboard')}}" active="request()->routeIs('dashboard')">Dashboard</a>
-						</li>
-						<li class="nav-item" >
-							<a class="nav-link" id = "header_unorder_list" href= "{{route('profile.edit')}}">Profile</a>
-						</li>
-						<li class="nav-item" >
-							<a class="nav-link" id = "header_unorder_list" href= "{{route('reorder.form')}}">Reorder Form</a>
-						</li>
+			<div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo01" >
+				<ul class="nav flex-column" id = "header_unorder_list">
+					@guest
+					<li class="nav-item " >
+						<a class="nav-link" id = "header_unorder_list" href="{{ route('login') }}">Login</a>
+					</li>
+					<li class="nav-item" >
+						<a class="nav-link" id = "header_unorder_list" href="{{ route('register') }}">Register</a>
+					</li>
+					<li class="nav-item" >
+						<a class="nav-link" id = "header_unorder_list">Contact Us</a>
+					</li>
+					@else
+					<li class="nav-item" >
+						<a class = "nav-link active" href="{{route('dashboard')}}" active="request()->routeIs('dashboard')">Dashboard</a>
+					</li>
+					<li class="nav-item" >
+						<a class="nav-link" id = "header_unorder_list" href= "{{route('profile.edit')}}">Profile</a>
+					</li>
+					<li class="nav-item" >
+						<a class="nav-link" id = "header_unorder_list" href= "{{route('reorder.form')}}">Reorder Form</a>
+					</li>
 
-						@can('user-view', 'user-create', 'user-edit', 'user-delete')
-						<li class="nav-item" >
-							<a class="nav-link" id = "header_unorder_list" href = "{{ route('users.index') }}">Manage Users</a>
-						</li>
-						@endcan
+					@can('user-view', 'user-create', 'user-edit', 'user-delete')
+					<li class="nav-item" >
+						<a class="nav-link" id = "header_unorder_list" href = "{{ route('users.index') }}">Manage Users</a>
+					</li>
+					@endcan
 
-						@can('role-view', 'role-create', 'role-edit', 'role-delete')
-						<li class="nav-item" >
-							<a class="nav-link" id = "header_unorder_list" href = "{{ route('roles.index') }}">Manage Role</a>
-						</li>
-						@endcan
+					@can('role-view', 'role-create', 'role-edit', 'role-delete')
+					<li class="nav-item" >
+						<a class="nav-link" id = "header_unorder_list" href = "{{ route('roles.index') }}">Manage Role</a>
+					</li>
+					@endcan
 
-						@can('product-view', 'product-create', 'product-edit', 'product-delete')
-						<li class="nav-item" >
-							<a class="nav-link" id = "header_unorder_list" href = "">Product List</a>
-						</li>
-						@endcan
+					@can('product-view', 'product-create', 'product-edit', 'product-delete')
+					<li class="nav-item" >
+						<a class="nav-link" id = "header_unorder_list" href = "">Product List</a>
+					</li>
+					@endcan
 
-						@can('product-create')
-						<li class="nav-item" >
-							<a class="nav-link" id = "header_unorder_list" href = "{{route('update.sku')}}">Update SKU</a>   {{--{{ route('products.index') }} --}}
-						</li>
-						@endcan
+					@can('product-create')
+					<li class="nav-item" >
+						<a class="nav-link" id = "header_unorder_list" href = "{{route('update.sku')}}">Update SKU</a>   {{--{{ route('products.index') }} --}}
+					</li>
+					@endcan
 
-						<li class="nav-item" >
-							<a class="nav-link" id = "header_unorder_list" href="{{ route('logout') }}">Logout</a>
-						</li>
-						@endguest
-					</ul>
-				</div>
+					<li class="nav-item" >
+						<a class="nav-link" id = "header_unorder_list" href="{{ route('logout') }}">Logout</a>
+					</li>
+					@endguest
+				</ul>
 			</div>
 		</nav>
 	</div>
 	<div class="content_view">
 		@yield('content')
 	</div>
+</div>
 </body>
 
 </html>
