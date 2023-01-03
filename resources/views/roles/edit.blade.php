@@ -1,8 +1,7 @@
 @extends('welcome')
 @section('content')
 
-
-<div class="p-3 mx-auto" id = 'role-edit'>
+<div class="p-3 mx-auto" id = 'roles-div'>
 	<div class="align-items-center justify-content-center " >
 		<div class="fixed-center">
             <div class="row">

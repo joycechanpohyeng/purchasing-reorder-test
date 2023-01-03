@@ -149,7 +149,7 @@ body{
 }
 
 
-#body-div, #user-div, #user-show, #role-div, #role-edit{
+#body-div, #user-div, #roles-div, #roles-edit{
 	/* old use */
 	/* background: hsl(34, 57%, 70%,0.8);  */
 	background:rgba(255, 249, 243, 0.37);; 
@@ -164,7 +164,7 @@ body{
 	backdrop-filter: blur(30px);
 }
 
-#user-table, #role-div, #role-edit{
+#user-table, #roles-table, #roles-edit{
 	white-space:nowrap;
 }
 
@@ -186,7 +186,22 @@ progress {
 	html,body {
 	   background-image: url('/images/');
 	   font-family: 'Lato', sans-serif;
+	   font-size: small;
 	}
 
+	#update-sku-header{
+		font-size: medium;
+	}
+
+	#update-sku-form{
+		font-size:small;
+	}
+
+	#body-div{
+		width:auto; /* to remove */
+	}
+	/* #nav-header-container{
+		navbar-expand-lg
+	} */
 
   }

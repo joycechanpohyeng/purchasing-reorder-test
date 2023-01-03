@@ -48,6 +48,9 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
+	Route::get('convert-to-json-example', function() {
+		return App\Models\User::paginate(5);
+	});
     Route::resource('products', ProductController::class);
 });
 
