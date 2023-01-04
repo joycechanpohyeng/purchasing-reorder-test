@@ -5,7 +5,7 @@
 
 <div class="w-100 p-3" id="body-div">
 	<div class="d-flex align-items-center justify-content-center" >
-		<div class="row justify-content-center w-100">
+		<div class="row justify-content-center">
             <div class = "card border-secondary mb-3" id = 'reorder-card'>
             
                 <h4 class="card-header text-center">Reorder Form</h4>
@@ -22,11 +22,11 @@
                         </div>
                     @endif --}}
 
-                    <form method = 'POST' action = "{{route('reorder.form')}}" enctype="multipart/form-data">
+                    <form method = 'POST' action = "{{route('reorder.form')}}" enctype="multipart/form-data" id = "upload-image-form">
                         
                         @csrf
                         <!-- store-->
-                        <div class="form-group mb-3">
+                        <div class="form-group mb-3" >
                             <label class="form-label" for = 'store_code'>Store</label>
                             <input type='text' name="store_code" id='store_code' class = " form-control @error('store_code') is-invalid @enderror">
 
@@ -92,7 +92,7 @@
 
                         <div class="form-group mb-3">
                             <label class="form-label" for="inputImage">Upload Image</label>
-                            <input type="file" name="image" id="inputImage" class="form-control @error('image') is-invalid @enderror">
+                            <input type="file" name="image" id="inputImage" class="form-control image-upload-buttom @error('image') is-invalid @enderror">
                             @error('image')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

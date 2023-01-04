@@ -19,7 +19,7 @@
                         <!-- Email Address -->
                         <div class="form-group mb-3">
                             <label for = 'email'>Email: </label>
-                            <input type='text' id='email' class = 'form-control' name="email" placeholder="ML12345" required autofocus>
+                            <input type='text' id='email' class = 'form-control' name="email" placeholder="***@mrdiy.com" required autofocus>
 
                             @if ($errors->has('email'))
                             <span class = 'text-danger'>{{$errors->first('email')}}</span>

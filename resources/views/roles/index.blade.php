@@ -32,7 +32,7 @@
                 <tr>
                     <th>No</th>
                     <th>Name</th>
-                    <th width="280px">Action</th>
+                    <th width="100px">Action</th>
                 </tr>
                     @foreach ($roles as $key => $role)
                     <tr>

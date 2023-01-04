@@ -67,7 +67,7 @@
 					<div class="form-group">
 						<strong>Role:</strong>
 						<!-- {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!} -->
-						{!! Form::select("roles[]", [''] + $roles, null,array('class' => 'form-control')) !!}
+						{!! Form::select("roles[]", [''] + $roles, null,array('class' => 'form-control', 'id' => 'role-select')) !!}
 
 						<!-- <div class="input-group mb-3">
 							<div class="input-group-prepend">
