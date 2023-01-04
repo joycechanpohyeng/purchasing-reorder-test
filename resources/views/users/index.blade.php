@@ -36,7 +36,7 @@
 							<th>Employee ID</th>
 							<th>Email</th>
 							<th>Roles</th>
-							<th width="280px">Action</th>
+							<th width="100px">Action</th>
 						</tr>
 					</thead>
 					</tbody>

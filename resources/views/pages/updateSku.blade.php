@@ -4,10 +4,10 @@
 
 <div class="w-100 p-3" id="body-div">
 	<div class="d-flex align-items-center justify-content-center" >
-		<div class="row justify-content-center w-100">
+		<div class="row justify-content-center">
             <div class = "card border-secondary mb-3" id = "sku-list-card">
             
-                <h4 class="card-header text-center" id = "update-sku-header">Update SKU List</h4>
+                <h4 class="card-header text-center">Update SKU List</h4>
                 <div class="card-body">
                     <!-- sucess message -->
                     @if ($message = Session::get('message'))
@@ -47,7 +47,7 @@
 
                         <div class="d-grid mx-auto">
                             <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-success" id = "update-sku-form">Import SKU</button>
+                                <button type="submit" class="btn btn-success" id = "update-sku-form">Upload SKU</button>
                             </div>
                         </div>            
                     </form>    

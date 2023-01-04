@@ -122,7 +122,7 @@ body{
 }
 
 .content_view {
-	margin-top: 250px;
+	margin-top: 200px;
 	/* background-image: url('/images/wood.jpg'); */
 	/* height: 100%; */
 }
@@ -137,7 +137,7 @@ body{
 
 #card-form{
 	width: 30rem;
-	max-height: 25rem;
+	height: auto;
 	background: hsla(0, 0%, 100%, 0.8);
 	
 	backdrop-filter: blur(30px);
@@ -161,6 +161,25 @@ progress {
 	width: 100%;
 }
 
+#inputImage{
+	text-align: center;
+}
+
+input::file-selector-button{
+	padding: 0.02em;
+	
+}
+
+
+#role-select{
+	display: block;
+	overflow-y: auto;
+	position: relative;
+	display: inline-block;
+}
+
+
+ 
 @media only screen and (max-width: 768px) {
 	html,body {
 	   background-image: url('/images/');
@@ -168,19 +187,45 @@ progress {
 	   font-size: small;
 	}
 
-	#update-sku-header{
+	.card-header{
 		font-size: medium;
 	}
 
+	.card-body{
+		font-size: 12px;
+	}
+	
+	
 	#update-sku-form{
-		font-size:small;
+		font-size: 12px;
 	}
 
-	#body-div{
-		width:auto; /* to remove */
+	#reorder-card, #sku-list-card{
+		width: auto;
+		height:fit-content;
+		padding: 10px;
+		
+	}
+
+	#card-form{
+		height:fit-content;
+		padding: 10px;
+	}
+	.content_view {
+		margin-top: 170px;
 	}
 	/* #nav-header-container{
 		navbar-expand-lg
 	} */
 
+	.image-upload-buttom{
+		box-sizing:border-box;
+	}
+
+	input::file-selector-button{
+		
+		font-size: 12px;
+		padding: 0.02em;
+		
+	}
   }
