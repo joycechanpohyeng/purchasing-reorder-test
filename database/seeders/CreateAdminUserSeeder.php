@@ -26,7 +26,7 @@ class CreateAdminUserSeeder extends Seeder
         ]);
       
         $role = Role::create(['name' => 'Admin']);      // to roles table
-       
+		
         $permissions = Permission::pluck('id','id')->all();
      
         $role->syncPermissions($permissions);

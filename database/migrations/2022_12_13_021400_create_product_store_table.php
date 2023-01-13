@@ -19,6 +19,7 @@ return new class extends Migration
 			$table->string('m_department');
 			$table->float('norm_price');
 			$table->string('m_desc')->nullable();
+			$table->string('m_group');
 			$table->timestamps();
 		});
 	}

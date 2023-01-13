@@ -48,9 +48,9 @@
 				<li class="nav-item" >
 					<a class = "nav-link active" href="{{route('dashboard')}}" active="request()->routeIs('dashboard')">Dashboard</a>
 				</li>
-				<li class="nav-item" >
+				<!-- <li class="nav-item" >
 					<a class="nav-link" id = "header_unorder_list" href= "{{route('profile.edit')}}">Profile</a>
-				</li>
+				</li> -->
 				<li class="nav-item" >
 					<a class="nav-link" id = "header_unorder_list" href= "{{route('reorder.form')}}">Reorder Form</a>
 				</li>

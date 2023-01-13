@@ -23,6 +23,7 @@ return new class extends Migration
 			$table->integer('remaining_qty');
 			$table->string('file_name');
 			$table->string('file_path');
+            $table->date('send_msg_at')->nullable();
 			$table->timestamps();
 		});
     }

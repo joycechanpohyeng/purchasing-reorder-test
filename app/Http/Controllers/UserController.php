@@ -46,7 +46,21 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::pluck('name','name')->all();
+
+        // find current user
+        $current_user_id = Auth::user()->id;
+        $current_id = DB::table('model_has_roles')->select('role_id')->where('model_id', '=', $current_user_id)->get()->toArray();
+        $current_id = $current_id[0]->role_id;
+        $role_name = DB::table('roles')->select('name')->where('id', $current_id)->get();
+        $role_name = $role_name[0]->name;
+ 
+ 
+        $roles = Role::pluck('name', 'name')->all();
+ 
+        if (strtolower($role_name) != 'admin'){
+            $roles = Arr::except($roles, ['Admin', 'admin']);
+        }
+
         return view('users.create',compact('roles'));
     }
     
@@ -57,7 +71,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+
+       
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
@@ -66,7 +82,7 @@ class UserController extends Controller
             'password' => 'required|same:confirm-password',
             'roles' => 'nullable'
         ]);
-    
+        
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
     
@@ -99,14 +115,18 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $roles = Role::pluck('name','name')->all();
-        
         $current_user_role = Auth::user()->roles->pluck('name','name')->all();
-
+		$current_user_role = array_change_key_case($current_user_role, CASE_LOWER);
+		$j = 0;
+		foreach($current_user_role as $ele){
+			$current_user_role[$j] = strtolower($ele);
+		}
+		// dd($current_user_role);
         // dd(Auth::user()->roles->pluck('name','name')->all());
         
         // only admin can grant admin privilege
-        if (!array_key_exists("Admin", $current_user_role)){
-            $roles = Arr::except($roles, ['Admin']);
+        if (!array_key_exists("admin", $current_user_role)){
+            $roles = Arr::except($roles, ['Admin', 'admin']);
         }
 
         $userRole = $user->roles->pluck('name','name')->all();
