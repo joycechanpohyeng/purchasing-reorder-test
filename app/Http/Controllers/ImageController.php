@@ -26,7 +26,7 @@ class ImageController extends Controller
 			'sku_code' => 'required|string',
 			'order_qty' => 'required|numeric',
 			'remaining_qty' => 'required|numeric',
-			'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,jfif|max:2048',
+			'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,jfif,heic|max:2048',
 			
 		]);
 		
