@@ -26,6 +26,10 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (config('app.env') != 'local'){
+            $strBaseURL = $this->app['url'];
+            $strBaseURL->forceRootUrl(config('app.url'));
+        }
         $this->configureRateLimiting();
 
         $this->routes(function () {
