@@ -26,6 +26,7 @@ class SkuDepartment extends Model
 		'm_department',
 		'norm_price',
 		'm_desc',
+		'm_group',
 
 	];
 

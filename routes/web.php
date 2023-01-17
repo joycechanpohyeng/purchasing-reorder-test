@@ -7,6 +7,7 @@ use PHPUnit\TextUI\XmlConfiguration\Group;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\updateSKUController;
+use App\Http\Controllers\ReorderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,8 +59,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('products', ProductController::class);
 });
 
-Route::group([['middleware']=>['auth']], function(){
-	// Route::get('reorder-infor')
+Route::group(['middleware' => ['auth']], function(){
+	Route::resource('reorder', ReorderController::class);
 
 });
 

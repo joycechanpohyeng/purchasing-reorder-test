@@ -54,7 +54,13 @@
 				<li class="nav-item" >
 					<a class="nav-link" id = "header_unorder_list" href= "{{route('reorder.form')}}">Reorder Form</a>
 				</li>
-
+				
+				@can('reorder-message')
+				<li class = "nav-item">
+					<a class = "nav-link" id = "header_unorder_list" href = "{{route('reorder.index')}}">Reorder Message</a>
+				</li>
+				@endcan
+				
 				@can('user-view', 'user-create', 'user-edit', 'user-delete')
 				<li class="nav-item" >
 					<a class="nav-link" id = "header_unorder_list" href = "{{ route('users.index') }}">Manage Users</a>

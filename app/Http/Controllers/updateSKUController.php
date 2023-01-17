@@ -24,7 +24,8 @@ class updateSKUController extends Controller
 	public function importData(Request $request){
 
 		$data = $request->validate([
-			'sku_file' => 'required|max:90000|mimes:xlsx,csv',
+			// 'sku_file' => 'required|max:90000|mimes:xlsx,csv',
+			'sku_file' => 'required|mimes:xlsx,csv',
 		]);
 		
 		
@@ -36,7 +37,7 @@ class updateSKUController extends Controller
 			
 			
 			$temp_path = $request->file('sku_file')->path();
-			$dt = Carbon::now();
+			$dt = Carbon::now();	// current datetime
 			$new_file_name = $dt->toDateString().'_'.$file_name;
 
 			$file_path = $request->file('sku_file')->storeAs('uploads', $new_file_name, 'public');
@@ -71,10 +72,15 @@ class updateSKUController extends Controller
 						$found = array_search('M_PRICE', $header);
 						$import_data_arr[$i]['norm_price'] = $line[$found];
 					}
+					
 					if(in_array('M_DESC', $header)){
 						$found = array_search('M_DESC', $header);
 						$insert_desc = preg_replace('/[^A-Za-z0-9\-]/', ' ',$line[$found]);
 						$import_data_arr[$i]['m_desc'] = $insert_desc;
+					}
+					if(in_array('M_GROUP', $header)){
+						$found = array_search('M_GROUP', $header);
+						$import_data_arr[$i]['m_group'] = $line[$found];
 					}
 					$import_data_arr[$i]["created_at"] = \Carbon\Carbon::now()->format('Y-m-d');
 					$import_data_arr[$i]["updated_at"] = \Carbon\Carbon::now()->format('Y-m-d');

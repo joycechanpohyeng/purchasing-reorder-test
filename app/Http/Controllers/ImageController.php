@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Models\SkuDepartment;
 
-
+// may need to add one page for after submit reorder form, list of view
 class ImageController extends Controller
 {
     public function index()
@@ -46,7 +46,7 @@ class ImageController extends Controller
 			$file_model->remaining_qty = $request->input('remaining_qty');
 			$file_model->file_name = time().'_'.$request->image->getClientOriginalName();
 			$file_model->file_path = '/storage/app/public/' . $filePath;
-
+			
 			$file_model->save();
 		}
 
