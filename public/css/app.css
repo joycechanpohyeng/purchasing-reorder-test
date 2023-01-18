@@ -199,8 +199,30 @@ input::file-selector-button{
 	display: inline-block;
 }
 
+.sku-img{
+	width:50px;
+	height: 50px;
+	display:block; 
+	cursor: pointer;
+}
 
- 
+.sku-img:hover{
+	transform: scale(3);
+}
+
+.message-radio-success{
+	accent-color: green;
+}
+
+.message-radio-danger{
+	accent-color: red;
+}
+
+  
+#gen-reorder-msg-button{
+	padding: 50px;
+}
+
 @media only screen and (max-width: 768px) {
 	html,body {
 	   background-image: url('/images/');

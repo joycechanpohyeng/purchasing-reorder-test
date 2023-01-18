@@ -35,7 +35,6 @@ class UserController extends Controller
         // dd(Auth::user()->id);
 
         $data = User::orderBy('id','DESC')->paginate(5);        // id, admin
-        dd(User::orderBy('id','DESC'));
         return view('users.index',compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }

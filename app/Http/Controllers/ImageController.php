@@ -34,8 +34,10 @@ class ImageController extends Controller
 		$file_model = new File;
 		if($request->method() == 'POST'){
 			$file_name = time().'_'.$request->image->getClientOriginalName();
-			$filePath = $request->file('image')->storeAs('uploads', $file_name, 'public');
-
+			// $filePath = $request->file('image')->storeAs('uploads', $file_name, 'public');
+			$request->image->move(public_path('images/sku_images'), $file_name);
+			$filePath = 'images/sku_images/'.$file_name;
+			
 			// from User models
 			$file_model->employee_id = Auth::user()->employee_id;
 			$file_model->email = Auth::user()->email;
@@ -45,7 +47,8 @@ class ImageController extends Controller
 			$file_model->order_qty = $request->input('order_qty');
 			$file_model->remaining_qty = $request->input('remaining_qty');
 			$file_model->file_name = time().'_'.$request->image->getClientOriginalName();
-			$file_model->file_path = '/storage/app/public/' . $filePath;
+			$file_model->file_path = $filePath;
+
 			
 			$file_model->save();
 		}
