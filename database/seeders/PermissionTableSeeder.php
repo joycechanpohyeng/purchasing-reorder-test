@@ -30,6 +30,7 @@ class PermissionTableSeeder extends Seeder
             'product-delete',
             'reorder-message',
             'reorder-view',
+            'reorder-update'
 
         ];
        

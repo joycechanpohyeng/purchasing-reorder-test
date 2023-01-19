@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('image_upload', function (Blueprint $table) {
 			$table->id();
+            $table->boolean('check')->nullable();
 			$table->string('employee_id');
 			$table->string('email');
 			$table->string('store_code');

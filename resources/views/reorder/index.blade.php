@@ -20,6 +20,7 @@
 			</div>
 			@endif
 
+			{!! Form::open(['method' => 'POST','route' => ['reorder.store'],'style'=>'display:inline']) !!}
 			<div class = 'tableContainer'>
 				<table class="table table-striped table-bordered p-3 mt-3" id = 'user-table'>
 					<thead>
@@ -31,8 +32,9 @@
 							<th>M Group</th>
 							<th>Order Quantity</th>
 							<th>Current Balance</th>
+							<th>Created At </th>
 							<th>Message Generated At</th>
-							<th>View Message</th>
+							<th width="40px">View Message</th>
 						</tr>
 					</thead>
 					</tbody>
@@ -42,24 +44,16 @@
 								<!-- check box -->
 								<!-- <td>{{ ++$i }}</td> -->
 								<td>
-									@if(!is_null($order->generate_msg_at))
-										<label class="form-check-custom success with-icon">
-											<input type = "radio" name = "message-check-box_{{$i}}" class="message-radio-success" id = 'tick_radio' value = 'false' disabled>
+									@if(!is_null($order->generate_msg_at) || ($order->check == True))
+										{!! Form::radio("message-check-box_$order->id", true, true, ['id' => 'tick_radio', 'class' => "message-radio-success", 'disabled']) !!}
 											<span><i class="fas fa-check">&#10003</i></span>
-										</lable>
-										<label class="form-check-custom danger with-icon">
-											<input type = "radio" name = "message-check-box_{{$i}}" class="message-radio-danger" id = 'cross_radio' value = 'false' disabled>
+										{!! Form::radio("message-check-box_$order->id", false, null, ['id' => 'cross_radio', 'class' => "message-radio-danger", 'disabled']) !!}
 											<span><i class="fas fa-check">&#x292B</i></span>
-										</lable>
 									@else
-										<label class="form-check-custom success with-icon">
-											<input type = "radio" name = "message-check-box_{{$i}}" class="message-radio-success" id = 'tick_radio'>
+										{!! Form::radio("message-check-box_$order->id", true, null, ['id' => 'tick_radio', 'class' => "message-radio-success", 'style: co']) !!}
 											<span><i class="fas fa-check">&#10003</i></span>
-										</lable>
-										<label class="form-check-custom danger with-icon">
-											<input type = "radio" name = "message-check-box_{{$i}}" class="message-radio-danger" id = 'cross_radio'>
+										{!! Form::radio("message-check-box_$order->id", false, true, ['id' => 'cross_radio', 'class' => "message-radio-danger"]) !!}
 											<span><i class="fas fa-check">&#x292B</i></span>
-										</lable>
 									@endif
 									
 								</td>
@@ -86,14 +80,17 @@
 								<!-- current balance column -->
 								<td>{{ $order->remaining_qty }}</td>
 
+								<!-- current balance column -->
+								<td>{{ date('Y-m-d', strtotime($order->created_at))}}</td>
+
 								<!-- message generate time column -->
-								@if ($i==1)
-									<td>{{ $order->generate_msg_at}} {{$i}}</td>
-								@else
-									<td>{{ $order->generate_msg_at}}</td>
-								@endif
-								<!-- view message column -->
 								<td>{{ $order->generate_msg_at}}</td>
+
+								<!-- view message column -->
+								<td>
+									<a class="btn btn-info" href="{{route('reorder.show', $order->id)}}">Show</a>
+									<a class="btn btn-info" href="">Edit</a>
+								</td>
 								
 							</tr>
 						@endforeach
@@ -107,11 +104,11 @@
 				<div class="col-md-12 text-center">
 					<!-- <button type="submit" class="btn btn-primary" >Generate Message</button> -->
 					<!-- <button type="submit" class="btn btn-primary" onclick="generate(data_len = '{{$i}}')">Generate Message</button> -->
-					<button type="submit" class="btn btn-primary" href = "{{route('reorder.index')}}">Generate Message</button>
-					
-				
+					<!-- <button type="submit" class="btn btn-primary" href = "{{route('reorder.index')}}">Generate Message</button> -->
+						{!! Form::submit('Generate Message', ['class' => 'btn btn-primary']) !!}
 				</div>
 			</div>
+			{!! Form::close() !!}
 		</div>
 	</div>
 </div>
