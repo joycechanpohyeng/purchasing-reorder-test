@@ -20,29 +20,28 @@
 			</div>
 			@endif
 
-			{!! Form::open(['method' => 'POST','route' => ['reorder.store'],'style'=>'display:inline']) !!}
+			{!! Form::open(['method' => 'POST', 'before' => 'csrf', 'route' => ['reorder.store'],'style'=>'display:inline']) !!}
 			<div class = 'tableContainer'>
 				<table class="table table-striped table-bordered p-3 mt-3" id = 'user-table'>
 					<thead>
 						<tr>
-							<th width="60px">Check</th>
-							<th>Store Code</th>
-							<th>SKU Code</th>
-							<th width="60px">Picture</th>
-							<th>M Group</th>
-							<th>Order Quantity</th>
-							<th>Current Balance</th>
-							<th>Created At </th>
-							<th>Message Generated At</th>
-							<th width="40px">View Message</th>
+							<th width = "30px">Check</th>
+							<th width = "30px">Store Code</th>
+							<th width = "30px">SKU Code</th>
+							<th width = "100px">Description</th>
+							<th width = "60px">Picture</th>
+							<th width = "30px">M Group</th>
+							<th width = "30px">Order Quantity</th>
+							<th width = "30px">Current Balance</th>
+							<th width = "50px">Created At </th>
+							<th width = "50px">Message Generated At</th>
+							<th width = "40px">View Message</th>
 						</tr>
 					</thead>
 					</tbody>
 						@foreach ($data as $key => $order)
-						
 							<tr>
-								<!-- check box -->
-								<!-- <td>{{ ++$i }}</td> -->
+								<!-- check radio -->
 								<td>
 									@if(!is_null($order->generate_msg_at) || ($order->check == True))
 										{!! Form::radio("message-check-box_$order->id", true, true, ['id' => 'tick_radio', 'class' => "message-radio-success", 'disabled']) !!}
@@ -55,7 +54,6 @@
 										{!! Form::radio("message-check-box_$order->id", false, true, ['id' => 'cross_radio', 'class' => "message-radio-danger"]) !!}
 											<span><i class="fas fa-check">&#x292B</i></span>
 									@endif
-									
 								</td>
 								
 								<!-- store code column -->
@@ -63,6 +61,9 @@
 								
 								<!-- sku code column -->
 								<td>{{ $order->sku_code }}</td>
+
+								<!-- desc column -->
+								<td>{{ $order->m_desc }}</td>
 
 								<!-- show picture column -->
 								<td>
@@ -81,17 +82,20 @@
 								<td>{{ $order->remaining_qty }}</td>
 
 								<!-- current balance column -->
-								<td>{{ date('Y-m-d', strtotime($order->created_at))}}</td>
+								<td>{{ date('Y-m-d h:i:s A', strtotime($order->created_at))}}</td>
 
 								<!-- message generate time column -->
-								<td>{{ $order->generate_msg_at}}</td>
-
+								@if (Empty($order->generate_msg_at))
+									<td></td>
+								@else
+									<td>{{ date('Y-m-d h:i:s A', strtotime($order->generate_msg_at))}}</td>
+								@endif
+								
 								<!-- view message column -->
 								<td>
 									<a class="btn btn-info" href="{{route('reorder.show', $order->id)}}">Show</a>
 									<a class="btn btn-info" href="">Edit</a>
 								</td>
-								
 							</tr>
 						@endforeach
 					</tbody>
@@ -100,12 +104,45 @@
 					{!! $data->links() !!}
 				</div>
 			</div>
-			<div class="d-grid mx-auto" id = "gen-reorder-msg-button">
+
+			<div class="d-grid mx-auto" id = "gen-reorder-msg-button">		
+				
 				<div class="col-md-12 text-center">
-					<!-- <button type="submit" class="btn btn-primary" >Generate Message</button> -->
-					<!-- <button type="submit" class="btn btn-primary" onclick="generate(data_len = '{{$i}}')">Generate Message</button> -->
-					<!-- <button type="submit" class="btn btn-primary" href = "{{route('reorder.index')}}">Generate Message</button> -->
-						{!! Form::submit('Generate Message', ['class' => 'btn btn-primary']) !!}
+					{!! Form::submit("Generate Message", ["type"=>"button", 
+						"id" => "generateMsg", "class" => "btn btn-primary", "data-toggle"=>"modal", "data-target"=>"#modalLongReorder", 
+						"data-attr" => "{{ route('reorder.store') }}"]) !!}
+
+					<!-- {!! Form::submit("Generate Message", ["type"=>"button", 
+						"id" => "generateMsg", "class" => "btn btn-primary"]) !!} -->
+					
+					<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalLongReorder">
+						Generate Message
+					</button> -->
+					
+					
+					<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalLongReorder">
+						View Message
+					</button> -->
+
+					<!-- modal -->
+					<div class = "modal fade" id = "modalLongReorder" tabindex="-1" role="dialog" aria-labelledby="modalLongReorderTitle" aria-hidden="true">
+						<div class="modal-dialog" role = "document">
+							<div class = "modal-content">
+								<div class = "modal-header">
+									<h5 class="modal-title" id = "modalLongReorderTitle">Reorder Message</h5>
+									<button type = "butthon" class = "close" data-dismiss="modal" aria-label = "Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class = "modal-body" id = "modal_body">
+									...
+								</div>
+								<div class = "modal-footer">
+									<button type = "button" class = "btn btn-secondary" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			{!! Form::close() !!}

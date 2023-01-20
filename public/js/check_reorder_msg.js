@@ -41,3 +41,30 @@ function generate(data_len){
     }
     
 }
+
+
+$(document).on('click', '#generateMsg', function(event){
+    event.preventDefault();
+    let href = $(this).attr('data-attr');
+    $.ajax({
+        url:href,
+        beforeSend: function(){
+            $('#loader').show();
+        },
+
+        // return result
+        success: function($result){
+            $('#modalLongReorder').modal("show");
+            $('#modal_body').html(result).show();
+        },
+        complete:function(){
+            $('loader').hide();
+        },
+        error: function(jqXHR, testStatus, error) {
+            console.log(error);
+            alert("Page " + href + " cannot open. Error:" + error);
+            $('#loader').hide();
+        },
+        timeout: 8000
+    })
+});

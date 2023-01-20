@@ -89,9 +89,10 @@
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</div>
 			</div>
+			{!! Form::close() !!}
 		</div>
 	</div>
 </div>
-{!! Form::close() !!}
+
 
 @endsection

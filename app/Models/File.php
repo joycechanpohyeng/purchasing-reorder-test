@@ -19,6 +19,7 @@ class File extends Model
 		'file_name',
 		'file_path',
 		'generate_msg_at',
+		'view_msg',
 	];
 
 	protected $table = 'image_upload';

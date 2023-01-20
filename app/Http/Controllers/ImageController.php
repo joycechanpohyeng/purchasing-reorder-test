@@ -35,8 +35,8 @@ class ImageController extends Controller
 		if($request->method() == 'POST'){
 			$file_name = time().'_'.$request->image->getClientOriginalName();
 			// $filePath = $request->file('image')->storeAs('uploads', $file_name, 'public');
-			$request->image->move(public_path('images/sku_images'), $file_name);
-			$filePath = 'images/sku_images/'.$file_name;
+			$request->image->move(public_path('sku_images'), $file_name);
+			$filePath = 'sku_images/'.$file_name;
 			
 			// from User models
 			$file_model->employee_id = Auth::user()->employee_id;
