@@ -43,7 +43,7 @@
 							<tr>
 								<!-- check radio -->
 								<td>
-									@if(!is_null($order->generate_msg_at) || ($order->check == True))
+									@if(!is_null($order->generate_msg_at) || ($order->check == 1))
 										{!! Form::radio("message-check-box_$order->id", true, true, ['id' => 'tick_radio', 'class' => "message-radio-success", 'disabled']) !!}
 											<span><i class="fas fa-check">&#10003</i></span>
 										{!! Form::radio("message-check-box_$order->id", false, null, ['id' => 'cross_radio', 'class' => "message-radio-danger", 'disabled']) !!}
@@ -67,9 +67,16 @@
 
 								<!-- show picture column -->
 								<td>
+									<img src = "{{ asset (''.$order->file_path)}}" class="sku-img" id = "skuImg">
 									<!-- <img src = "{{ asset ('images/sku_images')}}/{{$order->file_name}}" class="w-20 rounded justify-content-center" > -->
-									<img src = "{{ asset (''.$order->file_path)}}" class="sku-img" >
-									<!-- <img src = "{{storage_path('app/public/uploads/1674004146_1.png')}}"> -->
+									<div id = "imgModal" class="modal">
+										<span class ="close">&times;</span>
+										<img class = "modal-content" id = "modalImg">
+										<div id = "caption"></div>
+										<!-- <img src = "{{storage_path('app/public/uploads/1674004146_1.png')}}"> -->
+
+									</div>
+									
 								</td>
 
 								<!-- m group column -->
@@ -93,8 +100,10 @@
 								
 								<!-- view message column -->
 								<td>
-									<a class="btn btn-info" href="{{route('reorder.show', $order->id)}}">Show</a>
-									<a class="btn btn-info" href="">Edit</a>
+									@if(!Empty($order->generate_msg_at))
+										<a class="btn btn-info" href="{{route('reorder.show', $order->id)}}">Show</a>
+									@endif
+									<!-- <a class="btn btn-info" href="">Edit</a> -->
 								</td>
 							</tr>
 						@endforeach
@@ -108,41 +117,11 @@
 			<div class="d-grid mx-auto" id = "gen-reorder-msg-button">		
 				
 				<div class="col-md-12 text-center">
-					{!! Form::submit("Generate Message", ["type"=>"button", 
-						"id" => "generateMsg", "class" => "btn btn-primary", "data-toggle"=>"modal", "data-target"=>"#modalLongReorder", 
-						"data-attr" => "{{ route('reorder.store') }}"]) !!}
-
-					<!-- {!! Form::submit("Generate Message", ["type"=>"button", 
-						"id" => "generateMsg", "class" => "btn btn-primary"]) !!} -->
 					
-					<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalLongReorder">
-						Generate Message
-					</button> -->
+				<!-- {!! Form::open(['method' => 'POST','route' => ['reorder.store'],'style'=>'display:inline']) !!} -->
+					{!! Form::submit('Generate Message', ['class' => 'btn btn-primary']) !!}
+				<!-- {!! Form::close() !!} -->
 					
-					
-					<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalLongReorder">
-						View Message
-					</button> -->
-
-					<!-- modal -->
-					<div class = "modal fade" id = "modalLongReorder" tabindex="-1" role="dialog" aria-labelledby="modalLongReorderTitle" aria-hidden="true">
-						<div class="modal-dialog" role = "document">
-							<div class = "modal-content">
-								<div class = "modal-header">
-									<h5 class="modal-title" id = "modalLongReorderTitle">Reorder Message</h5>
-									<button type = "butthon" class = "close" data-dismiss="modal" aria-label = "Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class = "modal-body" id = "modal_body">
-									...
-								</div>
-								<div class = "modal-footer">
-									<button type = "button" class = "btn btn-secondary" data-dismiss="modal">Close</button>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 			{!! Form::close() !!}
@@ -150,6 +129,7 @@
 	</div>
 </div>
 
-<script src = "{{asset('js/check_reorder_msg.js')}}"></script>
+<script src = "{{asset('js/check_reorder_msg.js')}}">
+	function showImage()
+</script>
 @endsection
-

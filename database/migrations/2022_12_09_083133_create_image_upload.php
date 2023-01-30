@@ -25,7 +25,7 @@ return new class extends Migration
 			$table->string('file_name');
 			$table->string('file_path');
             $table->dateTime('generate_msg_at')->nullable();
-            $table->string('view_msg')->nullable();
+            $table->longText('view_msg')->nullable();
 			$table->timestamps();
 		});
     }

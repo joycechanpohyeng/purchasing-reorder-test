@@ -68,3 +68,25 @@ $(document).on('click', '#generateMsg', function(event){
         timeout: 8000
     })
 });
+
+
+
+function showImage(){
+    var modal = document.getElementById("imgModal");
+    var img = document.getElementById("skuImg");
+    var modalImg = document.getElementById("modalImg");
+    var captionText = document.getElementById('caption');
+
+    img.onclick = function(){
+        modal.style.display="block";
+        modalImg.src = this.src;
+        caotionText.innerHTML = this.alt;
+    }
+
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function(){
+        modal.style.display = "none";
+    }
+}
+
+
